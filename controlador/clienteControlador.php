@@ -4,6 +4,8 @@ require_once 'servico/validacaoServico.php';
 require_once 'modelo/clienteModelo.php';
 require_once 'modelo/enderecoModelo.php';
 
+
+
 /** anon */ 
 function cadastro(){
     if (ehPost()){
@@ -44,7 +46,7 @@ function cadastro(){
    } 
 }
 
-/** anon */ 
+/** user */ 
 function contato(){
     if (ehPost()){
         $nome = $_POST["nome"];

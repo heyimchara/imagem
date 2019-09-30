@@ -18,7 +18,7 @@ function visualizar (){
     exibir("produto/visualizar", $visualizar);
 }
 
-/** anon */
+/** admin */
 function adicionar(){
         
    if (ehPost()){

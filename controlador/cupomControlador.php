@@ -3,6 +3,9 @@
 require_once 'modelo/cupomModelo.php';
 require_once 'servico/validacaoServico.php';
 
+
+
+
 /** admin */
 function adicionar(){
     if (ehPost()){
@@ -30,7 +33,7 @@ if(count($erros) > 0){
      }    
 }
 
-/** anon */
+/** admin */
 function listarCupom(){
     $dados = array();
     $dados["cupons"] = pegarTodosCupom();
