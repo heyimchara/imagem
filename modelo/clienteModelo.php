@@ -1,12 +1,22 @@
 <?php
-   
-function adicionarCadastro($nome,$cpf,$senha,$email,$sexo,$tipousuario,$dataNasc){
+if (acessoPegarPapelDoUsuario() == 'admin'){
+ function adicionarCadastro($nome,$cpf,$senha,$email,$sexo,$tipousuario,$dataNasc){
     $comando = "INSERT INTO cliente (nome, cpf, senha, email, sexo, tipousuario, dataNasc)"
             . "VALUES ('$nome','$cpf','$senha','$email','$sexo','$tipousuario', '$dataNasc')";
     $resultado = mysqli_query($conexao = conn(), $comando);
     if(!$resultado){ die('Erro no cadastro!' . mysqli_error($conexao));}
     return 'Cadastrado com sucesso!';
+}   
+}else{
+    function adicionarCadastro($nome,$cpf,$senha,$email,$sexo,$dataNasc){
+    $comando = "INSERT INTO cliente (nome, cpf, senha, email, sexo, tipousuario, dataNasc)"
+            . "VALUES ('$nome','$cpf','$senha','$email','$sexo','user', '$dataNasc')";
+    $resultado = mysqli_query($conexao = conn(), $comando);
+    if(!$resultado){ die('Erro no cadastro!' . mysqli_error($conexao));}
+    return 'Cadastrado com sucesso!';
+}      
 }
+
 
 function pegarTodosClientes(){
     $sql = "SELECT * FROM cliente";
