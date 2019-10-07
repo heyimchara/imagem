@@ -15,12 +15,12 @@ function cadastro(){
        $cpf = $_POST["cpf"];
        $sexo = $_POST ["sexo"];
        $dataNasc = $_POST ["dataNasc"];
+       $tipousuario = $_POST ["tipousuario"];
       
        
-       
-       if (acessoPegarPapelDoUsuario() == 'admin'){
-            $tipousuario = $_POST ["tipousuario"];
-       }
+      
+           
+      
  
        $erros = array();
        
@@ -42,11 +42,7 @@ function cadastro(){
          $dados["erros"] = $erros;
          exibir("cliente/cadastro", $dados);
      }else{
-         if (acessoPegarPapelDoUsuario() == 'admin'){
          $mensagem = adicionarCadastro($nome,$cpf,$senha,$email,$sexo,$tipousuario,$dataNasc);
-         redirecionar("cliente/listarClientes");
-       }
-         $mensagem = adicionarCadastro($nome,$cpf,$senha,$email,$sexo,$dataNasc);
          redirecionar("cliente/listarClientes");
      }
       
