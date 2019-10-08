@@ -14,6 +14,7 @@ tipousuario varchar(5) not null,
 PRIMARY KEY (cod_cliente)
 );
 
+
 CREATE TABLE endereco(
 idEndereco int(11) auto_increment not null,
 cod_cliente int(11) not null,
@@ -102,3 +103,4 @@ FOREIGN KEY (id_pedido) REFERENCES pedido (id_pedido)
 ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+INSERT INTO cliente VALUES (24,"Modas LM","modaslm@gmail.com","123","50366664883",'2003-06-09',"F","admin");
