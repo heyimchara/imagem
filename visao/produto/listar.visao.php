@@ -3,7 +3,7 @@
    <table class="table">
             <thead>
                 <tr>
-                    
+                    <th>Imagem</th>
                     <th>Nome</th>
                     <th>Ver Detalhes</th>
                     <?php if (acessoPegarPapelDoUsuario() == 'admin') { ?> 
@@ -15,6 +15,7 @@
             </thead>
         <?php foreach ($produtos as $produto): ?> 
             <tr>
+               <td><img src="<?=$produto['imagem']?>" alt="imagem"></td> 
                <td><?=$produto['nome']?></td>
                <td><a href="./produto/ver/<?=$produto['cod_produto']?>">Ver</a></td>
                <?php if (acessoPegarPapelDoUsuario() == 'admin') { ?> 
