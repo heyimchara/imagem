@@ -26,7 +26,7 @@ if(count($erros) > 0){
      }    
 }
 
-/** adimin */
+/** admin */
 function listarCategorias(){
     $dados = array();
     $dados["categorias"] = pegarTodasCategorias();

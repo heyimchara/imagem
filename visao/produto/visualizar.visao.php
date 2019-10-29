@@ -1,7 +1,5 @@
-<?php
-?>
-
-<h2>Detalhes do produto</h2>       
+<h2>Detalhes do produto</h2>
+<img src="<?=$produto['imagem']?>" alt="imagem">
         <p> Nome: <?=$produto['nome']?></p>  
         <p> Preço: <?=$produto['preco']?></p>
         <p> Descrição: <?=$produto['descricao']?></p>        

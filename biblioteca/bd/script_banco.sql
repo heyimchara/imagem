@@ -81,13 +81,17 @@ FOREIGN KEY (cod_produto) REFERENCES produto (cod_produto)
 ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+
 CREATE TABLE pedido(
 id_pedido INT(11) unsigned auto_increment NOT NULL,
 cod_cliente INT(11) NOT NULL,
+cod_formadepagamento INT NOT NULL,
 idEndereco INT(11) NOT NULL,
 datacompra DATE NOT NULL,
 PRIMARY KEY(id_pedido),
 FOREIGN KEY (cod_cliente) REFERENCES cliente (cod_cliente)
+ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (cod_formadepagamento) REFERENCES forma_de_pagamento (cod_formadepagamento)
 ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (idEndereco) REFERENCES endereco (idEndereco)
 ON DELETE CASCADE ON UPDATE CASCADE
@@ -104,3 +108,38 @@ ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 INSERT INTO cliente VALUES (24,"Modas LM","modaslm@gmail.com","123","50366664883",'2003-06-09',"F","admin");
+
+-- Procedure --
+
+-- Pedido --
+
+-- insert pedido --
+
+DROP PROCEDURE IF EXISTS sp_cadastrar_pedido;
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_cadastrar_pedido(in cod_cliente int(11),cod_formadepagamento INT,idEndereco INT(11), datacompra DATE)
+BEGIN
+    if (cod_cliente != 0) and (cod_formadepagamento != 0) and (idEndereco != 0) then
+set datacompra = CURDATE();
+	INSERT INTO venda (idCliente, cod_formadepagamento, idEndereco, datacompra) VALUES(idCliente, cod_formadepagamento, idEndereco, datacompra);
+    else 
+             SELECT  "Você deve inserir um valor!" AS msg;
+END IF;
+
+END $$ 
+
+DELIMITER ;
+
+-- listar pedido por id do cliente --
+
+DROP PROCEDURE IF EXISTS sp_listar_pedido_por_id;
+DELIMITER $$
+
+CREATE PROCEDURE sp_listar_pedido_por_id(IN id INT(10))
+BEGIN
+	SELECT * FROM pedido WHERE cod_cliente = id;
+END $$
+
+DELIMITER ;

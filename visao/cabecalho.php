@@ -38,40 +38,46 @@ $(document).ready(function(){
   
 <div id="tudo" style="background-color: #A97FBD">
 
-       
-<div class="m">
-  <div class="row">
-  <div class="columns">
-    <ul class="dropdown menu" style="border-color:#A97FBD" data-dropdown-menu>
-      <li>
-        <a href="#Item-2"><i class="fi-list" style="color:black;font-size:20px;padding:1%;"></i></a>
-        <ul class="menu">
-          <li>
-            
-<div class="row">
-  <div class="columns">
-    <ul class="dropdown menu" data-dropdown-menu>
-       <li>
-        <a href="#Item-2">Infantil</a>
-      </li>
-      <li>
-        <a href="#Item-2">Masculino</a>
-  </li>
-      <li>
-        <a href="#Item-2">Feminino</a>
-      </li>
-    </ul>
-  </div>
-</div>
-            </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
 
+    	<nav id="menu">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><span>Administrador</span>
+						<ul>
+							<li><span>Produto</span>
+								<ul>
+									<li><a href="#">Listar</a></li>
+								</ul>
+							</li>
+							
+							<li><span>Categoria</span>
+								<ul>
+									<li><a href="#">Listar</a></li>
+								</ul>
+							</li>
+							
+							<li><span>Forma de Pagamento</span>
+								<ul>
+									<li><a href="#">Listar</a></li>
+								</ul>
+							</li>
+							
+							<li><span>Cupom</span>
+								<ul>
+									<li><a href="#">Listar</a></li>
+								</ul>
+							</li>
+							
+						</ul>
+						
+					</li>
+					
+					<li><a href="#">Cadastre-se</a></li>
+					<li><a href="#">Minha Conta</a></li>
 
-</div>
+				</ul>
+			</nav>
+
 <div class="" style="padding:3%;width:28%;">
   <form action="./produto/buscar" method="POST">
   <input id="barra_pesquisa" name="nome" type="text" placeholder = " Pesquisa..." style="margin:0px;" >
@@ -96,3 +102,17 @@ $(document).ready(function(){
       
 <br>
 
+		<!-- mmenu scripts -->
+		<script src="../dist/mmenu.polyfills.js"></script>
+		<script src="../dist/mmenu.js"></script>
+		<script>
+			new Mmenu( document.querySelector( '#menu' ));
+
+			document.addEventListener( 'click', function( evnt ) {
+				var anchor = evnt.target.closest( 'a[href^="#/"]' );
+				if ( anchor ) {
+					alert('Thank you for clicking, but that\'s a demo link.');
+					evnt.preventDefault();
+				}
+			});
+		</script>
